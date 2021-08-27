@@ -1,0 +1,29 @@
+<div class="container mt-5">
+    <h1 class="display-4 text-info">Tabla de Registro</h1>
+    <hr>
+    <button type="button" class="btn btn-success" [routerLink]="['/crud/create/']"><i class="fa fa-plus-circle" aria-hidden="true"></i>  Nuevo</button>
+    <table class="table table-striped mt-4">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Tools</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let product of products">
+          <tr>
+            <td>{{product.id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.quantity}}</td>
+            <td>
+                <button class="btn btn-warning" type="button" (click)="crudService.getById(product.id)" [routerLink]="['/crud/details/', product.id]"><i class="far fa-eye" style="color: white;"></i></button>
+                <button class="btn btn-info ml-2" type="button" [routerLink]="['/crud/update/', product.id]"><i class="fas fa-pen"></i></button>
+                <button class="btn btn-danger ml-2" type="button" (click)="eliminarProducto(product.id)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
